@@ -8,7 +8,7 @@ public class PacienteDTO {
     private String email;
     private String telefono;
 
-    // Getters y Setters
+
     public String getNombre() {
         return nombre;
     }
