@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Insumos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        form input, form button {
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gestión de Insumos</h1>
+
+    <!-- Formulario para registrar insumos -->
+    <h2>Registrar Insumo</h2>
+    <form id="register-form">
+        <input type="text" id="name" placeholder="Nombre del insumo" required>
+        <input type="text" id="descripcion" placeholder="Descripción" required>
+        <input type="number" id="stock" placeholder="Stock" required>
+        <button type="submit">Registrar</button>
+    </form>
+
+    <!-- Tabla para mostrar todos los insumos -->
+    <h2>Todos los Insumos</h2>
+    <table id="insumos-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Filas dinámicas -->
+        </tbody>
+    </table>
+
+    <!-- Tabla para insumos con bajo stock -->
+    <h2>Insumos con Bajo Stock</h2>
+    <table id="bajo-stock-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Filas dinámicas -->
+        </tbody>
+    </table>
+
+    <script>
+        const API_URL = 'http://localhost:8080/api/insumos';
+
+        // Función para cargar todos los insumos
+        async function loadInsumos() {
+            const response = await fetch(API_URL);
+            const insumos = await response.json();
+            const tableBody = document.querySelector('#insumos-table tbody');
+            tableBody.innerHTML = '';
+
+            insumos.forEach(insumo => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${insumo.id}</td>
+                    <td>${insumo.name}</td>
+                    <td>${insumo.descripcion}</td>
+                    <td>${insumo.stock}</td>
+                    <td><button onclick="tomarInsumo(${insumo.id})">Tomar</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Función para cargar insumos con bajo stock
+        async function loadBajoStock() {
+            const response = await fetch(`${API_URL}/acabandose`);
+            const insumos = await response.json();
+            const tableBody = document.querySelector('#bajo-stock-table tbody');
+            tableBody.innerHTML = '';
+
+            insumos.forEach(insumo => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${insumo.id}</td>
+                    <td>${insumo.name}</td>
+                    <td>${insumo.descripcion}</td>
+                    <td>${insumo.stock}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Función para registrar un nuevo insumo
+        document.querySelector('#register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.querySelector('#name').value;
+            const descripcion = document.querySelector('#descripcion').value;
+            const stock = document.querySelector('#stock').value;
+
+            await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, descripcion, stock })
+            });
+
+            // Recargar tablas
+            loadInsumos();
+            loadBajoStock();
+
+            // Limpiar formulario
+            e.target.reset();
+        });
+
+        // Función para tomar un insumo y decrementar el stock
+        async function tomarInsumo(id) {
+            await fetch(`${API_URL}/tomar/${id}`, { method: 'POST' });
+
+            // Recargar tablas
+            loadInsumos();
+            loadBajoStock();
+        }
+
+        // Cargar datos iniciales
+        loadInsumos();
+        loadBajoStock();
+    </script>
+</body>
+</html>
