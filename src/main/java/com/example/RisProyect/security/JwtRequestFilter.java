@@ -19,12 +19,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     private final static Logger logger = LoggerFactory.getLogger(JwtRequestFilter.class);
 
-    private final com.example.RisProyect.security.UserDetailsServiceImpl userDetailsService;
+    private final UserDetailsServiceImpl userDetailsService;
 
-    private final com.example.RisProyect.security.JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
 
     @Autowired
-    public JwtRequestFilter(com.example.RisProyect.security.UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil) {
+    public JwtRequestFilter(UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil) {
         this.userDetailsService = userDetailsService;
         this.jwtUtil = jwtUtil;
     }

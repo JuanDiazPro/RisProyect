@@ -1,4 +1,4 @@
-package com.example.practica_completa.security.dto;
+package com.example.RisProyect.security.dto;
 public class AuthRequest {
     private String username;
     private String password;

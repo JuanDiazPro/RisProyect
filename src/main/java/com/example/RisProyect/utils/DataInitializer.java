@@ -1,8 +1,8 @@
 package com.example.RisProyect.utils;
+import com.example.RisProyect.role.model.Role;
 import com.example.RisProyect.role.model.RoleRepository;
 import com.example.RisProyect.user.model.User;
 import com.example.RisProyect.user.model.UserRepository;
-import com.example.RisProyect.role.model.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
