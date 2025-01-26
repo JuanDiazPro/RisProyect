@@ -1,5 +1,5 @@
-package com.example.practica_completa.state.control;
-import com.example.practica_completa.state.model.StateDto;
+package com.example.RisProyect.state.control;
+import com.example.RisProyect.state.model.StateDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

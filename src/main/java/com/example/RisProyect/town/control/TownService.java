@@ -1,10 +1,10 @@
-package com.example.practica_completa.town.control;
+package com.example.RisProyect.town.control;
+import com.example.RisProyect.state.model.StateRepository;
+import com.example.RisProyect.town.model.TownDto;
+import com.example.RisProyect.town.model.TownRepository;
+import com.example.RisProyect.utils.Message;
 import com.example.practica_completa.state.model.State;
-import com.example.practica_completa.state.model.StateRepository;
 import com.example.practica_completa.town.model.Town;
-import com.example.practica_completa.town.model.TownDto;
-import com.example.practica_completa.town.model.TownRepository;
-import com.example.practica_completa.utils.Message;
 import com.example.practica_completa.utils.TypesResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

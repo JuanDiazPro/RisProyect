@@ -1,4 +1,4 @@
-package com.example.practica_completa.user.model;
+package com.example.RisProyect.user.model;
 
 import com.example  .practica_completa.role.model.Role;
 import jakarta.persistence.*;

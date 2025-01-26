@@ -1,5 +1,5 @@
-package com.example.practica_completa.role.model;
-import com.example.practica_completa.user.model.User;
+package com.example.RisProyect.role.model;
+import com.example.RisProyect.user.model.User;
 import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

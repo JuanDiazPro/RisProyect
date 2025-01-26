@@ -1,10 +1,10 @@
-package com.example.practica_completa.security.Controlador;
-import com.example.practica_completa.security.JwtUtil;
-import com.example.practica_completa.security.UserDetailsServiceImpl;
+package com.example.RisProyect.security.Controlador;
+import com.example.RisProyect.security.JwtUtil;
+import com.example.RisProyect.security.UserDetailsServiceImpl;
+import com.example.RisProyect.user.model.User;
+import com.example.RisProyect.user.model.UserRepository;
 import com.example.practica_completa.security.dto.AuthRequest;
 import com.example.practica_completa.security.dto.AuthResponse;
-import com.example.practica_completa.user.model.User;
-import com.example.practica_completa.user.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -48,6 +48,6 @@ public class AuthController {
 
         long expirationTime = jwtUtil.getExpirationTime();
 
-        return new AuthResponse(jwt, user.getId(), user.getUsername(), expirationTime);
+        return new AuthResponse(jwt, user.getClass(), user.getUsername(), expirationTime);
     }}
 

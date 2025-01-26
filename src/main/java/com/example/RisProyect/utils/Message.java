@@ -1,16 +1,16 @@
-package com.example.practica_completa.utils;
+package com.example.RisProyect.utils;
 
 public class Message {
     private String text;
-    private TypesResponse type;
+    private com.example.practica_completa.utils.TypesResponse type;
     private Object result;
 
-    public Message(String text, TypesResponse type) {
+    public Message(String text, com.example.practica_completa.utils.TypesResponse type) {
         this.text = text;
         this.type = type;
     }
 
-    public Message(Object result,String text, TypesResponse type) {
+    public Message(Object result,String text, com.example.practica_completa.utils.TypesResponse type) {
         this.text = text;
         this.type = type;
         this.result = result;
@@ -24,11 +24,11 @@ public class Message {
         this.text = text;
     }
 
-    public TypesResponse getType() {
+    public com.example.practica_completa.utils.TypesResponse getType() {
         return type;
     }
 
-    public void setType(TypesResponse type) {
+    public void setType(com.example.practica_completa.utils.TypesResponse type) {
         this.type = type;
     }
 

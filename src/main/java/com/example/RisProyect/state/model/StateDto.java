@@ -1,4 +1,4 @@
-package com.example.practica_completa.state.model;
+package com.example.RisProyect.state.model;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 

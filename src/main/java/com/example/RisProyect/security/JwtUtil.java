@@ -1,4 +1,4 @@
-package com.example.practica_completa.security;
+package com.example.RisProyect.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;

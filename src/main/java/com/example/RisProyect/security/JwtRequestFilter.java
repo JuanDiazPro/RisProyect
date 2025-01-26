@@ -1,4 +1,4 @@
-package com.example.practica_completa.security;
+package com.example.RisProyect.security;
 import java.io.IOException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -19,12 +19,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     private final static Logger logger = LoggerFactory.getLogger(JwtRequestFilter.class);
 
-    private final UserDetailsServiceImpl userDetailsService;
+    private final com.example.RisProyect.security.UserDetailsServiceImpl userDetailsService;
 
-    private final JwtUtil jwtUtil;
+    private final com.example.RisProyect.security.JwtUtil jwtUtil;
 
     @Autowired
-    public JwtRequestFilter(UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil) {
+    public JwtRequestFilter(com.example.RisProyect.security.UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil) {
         this.userDetailsService = userDetailsService;
         this.jwtUtil = jwtUtil;
     }

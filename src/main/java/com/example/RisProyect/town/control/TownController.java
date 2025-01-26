@@ -1,6 +1,6 @@
-package com.example.practica_completa.town.control;
+package com.example.RisProyect.town.control;
 
-import com.example.practica_completa.town.model.TownDto;
+import com.example.RisProyect.town.model.TownDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = {"*"}, methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
 public class TownController {
 
-    private final TownService service;
+    private final com.example.RisProyect.town.control.TownService service;
 
     @Autowired
-    public TownController(TownService service) {
+    public TownController(com.example.RisProyect.town.control.TownService service) {
         this.service = service;
     }
 
