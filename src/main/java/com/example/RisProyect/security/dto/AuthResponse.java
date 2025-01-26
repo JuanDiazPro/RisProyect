@@ -1,10 +1,10 @@
-package com.example.practica_completa.security.dto;
+package com.example.RisProyect.security.dto;
 
 import com.example.RisProyect.user.model.User;
 
 public class AuthResponse {
     private String jwt;
-    private Long userId;
+    private Class<? extends User> userId;
     private String username;
     private long expiration;
 
@@ -23,11 +23,11 @@ public class AuthResponse {
         this.jwt = jwt;
     }
 
-    public Long getUserId() {
+    public Class<? extends User> getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Class<? extends User> userId) {
         this.userId = userId;
     }
 
